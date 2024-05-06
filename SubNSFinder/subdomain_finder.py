@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 def find_subdomains(domain):
     subdomains = []
     # Get the date 6 days before the current date
-    date = datetime.now().strftime('%Y-%m-%d')
+    date = (datetime.now() - timedelta(days=6)).strftime('%Y-%m-%d')
     url = f"https://subdomainfinder.c99.nl/scans/{date}/{domain}"
     try:
         response = requests.get(url)
