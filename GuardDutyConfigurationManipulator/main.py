@@ -56,25 +56,43 @@ def main():
     option = input("\nEnter your choice: ")
 
     if option == '1':
-        print("\na- Disabling the detector")
+        print("\n\033[91m\033[3mRequired IAM Permissions\n"
+              "guardduty:ListDetectors\n"
+              "guardduty:UpdateDetector\033[0m\n")
+        print("a- Disabling the detector")
         print("b- Removing S3 as a log source")
-        print("c- Increase finding update time to 6 hours\n")
-        sub_option = input("Enter your choice: \n")
+        print("c- Increase finding update time to 6 hours")
+        sub_option = input("\nEnter your choice: ")
         cli_command = misconfigure_detector(detector_id, sub_option)
     elif option == '2':
-        ip_set_id = input("\nEnter the IP set ID: ")
+        print("\n\033[91m\033[3mRequired IAM Permissions\n"
+              "guardduty:ListDetectors\n"
+              "guardduty:ListIPSets\n"
+              "guardduty:CreateIPSet\n"
+              "guardduty:UpdateIPSet\n"
+              "iam:PutRolePolicy\033[0m\n")
+        ip_set_id = input("Enter the IP set ID: ")
         location = input("Enter the location of the custom IP list: ")
         cli_command = modify_trusted_ip_lists(detector_id, ip_set_id, location)
     elif option == '3':
-        print("\na- Disable GuardDuty CloudWatch Event")
+        print("\n\033[91m\033[3mRequired IAM Permissions\n"
+              "events:ListRules\n"
+              "events:ListTargetsByRule\n"
+              "events:PutRule\n"
+              "events:RemoveTargets\033[0m\n")
+        print("a- Disable GuardDuty CloudWatch Event")
         print("b- Modify Event Pattern")
         print("c- Remove Event Targets")
         sub_option = input("\nEnter your choice: ")
         cli_command = modify_cloudwatch_events_rule(sub_option)
     elif option == '4':
+        print("\n\033[91m\033[3mRequired IAM Permissions\n"
+              "guardduty:CreateFilter\033[0m\n")
         cli_command = create_suppression_rule(detector_id)
     elif option == '5':
-        destination_id = input("\nEnter the destination ID: ")
+        print("\n\033[91m\033[3mRequired IAM Permissions\n"
+              "guardduty:DeletePublishingDestination\033[0m\n")
+        destination_id = input("Enter the destination ID: ")
         cli_command = delete_publishing_destination(detector_id, destination_id)
     else:
         cli_command = "Invalid option"
