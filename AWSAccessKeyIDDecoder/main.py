@@ -14,7 +14,7 @@ access_key_id = input("Enter the AWS Access Key ID: ")
 
 # Get and print the AWS account ID
 account_id = get_aws_account_id(access_key_id)
-print("Account ID:", account_id)
+print("\nAccount ID:", account_id)
 
 
 # Example usage
