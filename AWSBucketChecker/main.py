@@ -12,7 +12,7 @@ TIMEOUT = 5
 
 # Function to obtain user input
 def get_user_input():
-    name = input("Enter an AWS S3 bucket name to check for accessibility: ").strip()
+    name = input("\nEnter an AWS S3 bucket name to check for accessibility: ").strip()
 
     # Check if the provided name is valid for AWS
     is_aws_valid = aws_is_valid_bucket_name(name)

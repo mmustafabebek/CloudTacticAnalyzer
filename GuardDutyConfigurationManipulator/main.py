@@ -44,7 +44,7 @@ def delete_publishing_destination(detector_id, destination_id):
     return cli_command
 
 def main():
-    detector_id = input("Enter the detector ID: ")
+    detector_id = input("\nEnter the detector ID: ")
 
     print("\nOptions:")
     print("1- Misconfiguring the Detector")

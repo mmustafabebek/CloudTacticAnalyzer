@@ -10,7 +10,7 @@ def get_aws_account_id(access_key_id):
     return "{:012d}".format(account_id)
 
 # Prompt the user to enter the access key ID
-access_key_id = input("Enter the AWS Access Key ID: ")
+access_key_id = input("\nEnter the AWS Access Key ID: ")
 
 # Get and print the AWS account ID
 account_id = get_aws_account_id(access_key_id)

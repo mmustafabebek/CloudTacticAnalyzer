@@ -1,8 +1,10 @@
 import subdomain_finder
-import ns_checker
+from SubNSFinder.ns_checker import check_dns_records
 
+
+# Modify main.py
 def main():
-    domain = input("Enter the domain to scan: ")
+    domain = input("\nEnter the domain to scan: ")
 
     # Step 1: Find subdomains
     print("Finding subdomains...")
@@ -13,9 +15,9 @@ def main():
     for subdomain in subdomains:
         print(subdomain)
 
-    # Step 2: Check NS records for AWS resources
-    print("Checking NS records for AWS resources...")
-    aws_resources = ns_checker.check_ns_records(subdomains)
+    # Step 2: Check DNS records for AWS resources
+    print("Checking DNS records for AWS resources...")
+    aws_resources = check_dns_records(subdomains)
 
     # Step 3: Output results
     if aws_resources:
